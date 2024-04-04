@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <span class="logo-text">Boat Chatter</span>
+        </div>
+        <div class="navbar-search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="navbar-links">
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </div>
+        <div class="navbar-dropdown">
+            <button class="category-button" id="category-button">Category</button>
+            <div class="category-content" id="category-content">
+                <a href="{% url 'category_items' 'fishing' %}">Fishing Boats</a>
+                <a href="{% url 'category_items' 'sail' %}">Sail Boats</a>
+                <a href="{% url 'category_items' 'yacht' %}">Yachts</a>
+            </div>
+        </div>
+        <div class="navbar-icons">
+            <div class="user-avatar">
+                {{ user.username.0 }}
+            </div>
+        </div>
+    </nav>
+
+    <div class="booking-container">
+        <div class="boat-details">
+            <h2>Boat Details</h2>
+            <img src="{{ booking.boat.image.url }}" alt="{{ booking.boat.name }}">
+            <h3>{{ booking.boat.name }}</h3>
+            <p>{{ booking.boat.description }}</p>
+            <p>Price: Ksh<span id="boat-price">{{ booking.boat.price }}</span></p>
+            <p>Accommodation: {{ booking.boat.accommodation }}</p>
+        </div>        
+        <div class="booking-details">
+            <h2>Booking Details</h2>
+            <p>User: {{ booking.user.username }}</p>
+            <p>Selected Date: {{ booking.selected_date }}</p>
+            <p>Status: {{ booking.status }}</p>
+            <input type="hidden" id="booking-id" value="{{ booking.id }}">
+        </div>
+         <div class="payment-section">
+            <h2>Payment</h2>
+            <form id="payment-form">
+                <label>
+                    <input type="radio" id="debit-card" name="payment-method" value="debit-card" checked>
+                    Debit Card
+                </label>
+        
+                <label>
+                    <input type="radio" id="mpesa" name="payment-method" value="mpesa">
+                    Mpesa
+                </label>
+        
+                <div id="debit-card-fields">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="**** **** **** ****" required>
+        
+                    <label for="card-holder">Card Holder:</label>
+                    <input type="text" id="card-holder" name="card-holder" placeholder="John Doe" required>
+        
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+        
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+        
+                <div id="mpesa-fields" style="display: none;">
+                    <label for="mpesa-phone-number">Phone Number:</label>
+                    <input type="text" id="mpesa-phone-number" name="mpesa-phone-number" placeholder="254712345678" required>
+                </div>
+                <button type="button" id="payNowButton">Pay Now</button>
+
+            </form>
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var debitCardRadio = document.getElementById('debit-card');
+                var mpesaRadio = document.getElementById('mpesa');
+                var debitCardFields = document.getElementById('debit-card-fields');
+                var mpesaFields = document.getElementById('mpesa-fields');
+        
+                debitCardRadio.addEventListener('change', function () {
+                    debitCardFields.style.display = 'block';
+                    mpesaFields.style.display = 'none';
+                });
+        
+                mpesaRadio.addEventListener('change', function () {
+                    debitCardFields.style.display = 'none';
+                    mpesaFields.style.display = 'block';
+                });
+            });
+        </script> 
+        <script src="{% static 'js/booking.js' %}"></script>                        
+</body>
+</html>

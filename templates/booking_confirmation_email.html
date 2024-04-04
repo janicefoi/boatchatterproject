@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+</head>
+
+<body>
+    <h2>Booking Confirmation</h2>
+    <p>Dear {{ booking.user.username }},</p>
+    
+    <p>Your booking with the following details has been confirmed:</p>
+    <ul>
+        <li><strong>Booking ID:</strong> {{ booking.id }}</li>
+        <li><strong>Boat Name:</strong> {{ booking.boat.name }}</li>
+        <li><strong>Boat Image:</strong> <img src="{{ booking.boat.image.url }}" alt="{{ booking.boat.name }}"></li>
+        <li><strong>Description:</strong> {{ booking.boat.description }}</li>
+        <li><strong>Accommodation:</strong> {{ booking.boat.accommodation }} people</li>
+        <li><strong>Price Paid:</strong> Ksh {{ booking.price }}</li>
+    </ul>
+    
+    <p>Thank you for choosing our service. If you have any questions or concerns, feel free to contact us.</p>
+    
+    <p>Best regards,<br>Your Boat Chatter Team</p>
+</body>
+
+</html>
