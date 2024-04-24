@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar .logo-text {
+    font-size: 24px;
+    color: #333;
+    font-family: 'Pacifico', cursive;
+}
+.navbar-logo img {
+    width: 50px;
+    height: auto;
+}
+
+
+.navbar-links a, .category-button {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 16px; 
+}
+
+
+.navbar-logo button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.navbar-logo button:hover {
+    background-color: #2980b9;
+}
+
+.navbar-search input {
+    border: 1px solid #92ddff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.navbar-search input:hover {
+    background-color: #92ddff;
+}
+
+.navbar-dropdown {
+    position: relative;
+}
+
+.category-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.category-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+    padding: 10px;
+}
+
+.category-content a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+.category-button:hover + .category-content,
+.category-content.active {
+    display: block;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons img {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+}
+
+.user-avatar {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 1% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.item-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Increase the width */
+    height: 430px; /* Increase the height */
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
+.item-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-details {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.item-name {
+    font-size: 1.2rem;
+}
+
+.item-brand {
+    color: #666;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.item-description {
+    color: #888;
+    margin-top: 8px;
+}
+
+.item-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.quantity-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.item-quantity {
+    font-size: 1.2rem;
+    padding: 0 10px;
+}
+
+.rent-per-day-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.proceed-to-checkout-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cart-icon-container {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    padding: 0;
+}
+
+.wishlist-count {
+    position: absolute;
+    top: 10px;
+    right: 110px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    padding: 0;
+}
+
+.wishlist-icon.added {
+    color: #fff;
+    background-color: #000;
+}
+
+.item-subtotal {
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: default;
+}
+
+
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.address-section,
+.phone-section,
+.payment-section {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff; /* Add white background */
+    width: 100%; /* Set width to 100% */
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.payment-options {
+    margin-top: 10px;
+}
+
+.payment-options label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.place-order-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.place-order-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Add this CSS to your dashboard.css file */
+
+.order-status-container {
+    margin-top: 20px;
+}
+
+.order-status-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.order-status-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-status-container li {
+    margin-bottom: 15px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.order-status-container li i {
+    margin-right: 10px;
+    font-size: 32px; /* Increase the icon size */
+    color: #000; /* Set default color to black */
+}
+
+.order-status-container li.current i {
+    color: #3498db; /* Set color for the current status */
+}
+
+/* Additional styling for the Font Awesome icons */
+.fa-check-circle {
+    color: #2ecc71; /* Green color for check mark */
+}
+
+.fa-spinner {
+    color: #f39c12; /* Orange color for spinner */
+    animation: spin 2s infinite linear;
+}
+
+.fa-box {
+    color: #e74c3c; /* Red color for box */
+}
+
+.fa-truck {
+    color: #3498db; /* Blue color for truck */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
