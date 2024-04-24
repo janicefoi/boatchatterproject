@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jsh',
+    'boat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'jsh.UserProfile'
+AUTH_USER_MODEL = 'boat.UserProfile'
 GDAL_LIBRARY_PATH = r'C:\\gdal\\bin\\gdal302.dll'
 GEOS_LIBRARY_PATH = r'C:\\gdal\\bin\\geos_c.dll'
 MEDIA_URL = '/media/'
