@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-left">
+            <div class="logo-text">Boat Chatter</div>
+        </div>
+        <div class="dashboard-right">
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'registration' %}">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="image-container">
+            <div class="image full-width" style="background-image: url('{% static 'img/boat2.jpeg' %}');">
+                <div class="image-content">
+                    <h1>⛵✨ Explore the Beauty of the Sea with Boat Chatter ✨⛵</h1>
+                    <p>We're passionate about providing exceptional boat rental services for your unforgettable aquatic adventures.</p>
+                    <a class="rent-now-button" href="dashboard">RENT NOW</a>
+                </div>                
+            </div>
+        </div>
+        <div class="boat-section">
+            <h2>Available Boats</h2>
+            <p>Discover a variety of boats for your perfect journey.</p>
+            <div class="boat-types">
+                <div class="boat-type">
+                    <img src="{% static 'img/fishing.jpeg' %}" alt="Fishing Boat">
+                    <div class="type-content">
+                        <h3>Fishing Boats</h3>
+                        <p>Explore the seas with our top-notch fishing boats.</p>
+                        <a class="boat-button" href="{% url 'category_items' 'fishing' %}">RENT NOW</a>
+                    </div>
+                </div>
+                
+                <div class="boat-type">
+                    <img src="{% static 'img/yachts.jpeg' %}" alt="Yachts">
+                    <div class="type-content">
+                        <h3>Yachts</h3>
+                        <p>Luxury yachts for an extravagant and relaxing experience.</p>
+                        <a class="boat-button" href="{% url 'category_items' 'yacht' %}">RENT NOW</a>
+                    </div>
+                </div>
+                
+                <div class="boat-type">
+                    <img src="{% static 'img/sail.jpeg' %}" alt="Sail Boat">
+                    <div class="type-content">
+                        <h3>Sail Boats</h3>
+                        <p>Feel the wind in your sails with our sailboat collection.</p>
+                        <a class="boat-button" href="{% url 'category_items' 'sail' %}">RENT NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

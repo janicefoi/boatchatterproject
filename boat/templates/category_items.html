@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Category</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <span class="logo-text">Boat Chatter</span>
+            <button id="update-profile-btn">Update Profile</button>
+        </div>
+        <div class="navbar-search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="navbar-links">
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </div>
+        <div class="navbar-dropdown">
+            <button class="category-button" id="category-button">Category</button>
+            <div class="category-content" id="category-content">
+                <a href="{% url 'category_items' 'fishing' %}">Fishing Boats</a>
+                <a href="{% url 'category_items' 'sail' %}">Sail Boats</a>
+                <a href="{% url 'category_items' 'yacht' %}">Yachts</a>
+            </div>
+        </div>
+        <div class="navbar-icons">
+            <div class="user-avatar">
+                {{ user.username.0 }}
+            </div>
+        </div>
+    </nav>
+    <div class="item-container">
+        {% for boat in category_items %}
+            <div class="item-card">
+                <img src="{{ boat.image.url }}" alt="{{ boat.name }}" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">{{ boat.name }}</h3>
+                    <p class="item-price">Ksh {{ boat.price }} Per Day</p>
+                    <p class="item-description">Description: {{ boat.description}}</p>
+                </div>
+                <div class="item-actions">
+                    <button class="rent-per-day-btn" data-boat-id="{{ boat.id }}" data-userprofile-id="{{user.id }}">RENT PER DAY</button>
+                    <i class="fas fa-heart wishlist-icon" data-boat-id="{{ boat.id }}"></i>
+                    <input type="text" id="datepicker-input-{{ boat.id }}" style="display: none;">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+
+</html>
