@@ -43,10 +43,6 @@ The **Boat Chatter Project** is a web application built using the Django framewo
 4. Follow the prompts to select a booking date and complete the payment process.
 5. Receive a booking confirmation email upon successful payment.
 
-## Contributors
-
-- [Janice Wambui](https://github.com/janicefoi)
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
